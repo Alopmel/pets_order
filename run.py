@@ -1,7 +1,6 @@
 print("Hello, we are a store dedicated to the health and happiness of your pet.")
 print("let's start by filling in your dog's file with a few simple questions\n")
 
-
 def calculate_amount():
     """
     Add the pet's name and calculated its daily and monthly amount of food
@@ -10,7 +9,7 @@ def calculate_amount():
     pet_name_str = input("What is your dog's name? ")
     while True:
         try:
-            weight = float(input("Insert your dog's weight:\n ")) 
+            weight = float(input("Insert your dog's weight: ")) 
             daily_amount = (weight * 0.025) * 1000
             daily_round = round(daily_amount,2)
             monthly_amount = (daily_amount * 30) / 1000
@@ -26,18 +25,42 @@ def create_order():
     """
     We show all the options that the client has
     A variable is created where the purchase products will be added
+    A loop is created that validates the inserted number for available actions
     """
     purchase = []
 
     print("-----------------------")
-    print("-  List of products   -")
+    print("-    Shopping list    -")
     print("-----------------------\n")
 
-    print("Insert the number that corresponds to the action you want to perform")
-    print("1. Add product")
-    print("2. Remove product ")
-    print("3. Show shopping list")
-    print("4. Exit the program\n")
-    option = input ("-->\n")
+
+
+    while True:
+        print("Insert the number that corresponds to the action you want to perform \n")
+        print("1. Add product")
+        print("2. Remove product ")
+        print("3. Show shopping list")
+        print("4. Exit the program\n")
+        option = input ("-->")
+
+        if option == "1":
+            print("What fedd do you want to buy?\n")
+            print("Salmon")
+            print("Meat")
+            print("Chicken\n")
+
+            product = input("Insert a product: ").upper()
+
+            if product != "SALMON" and product != "MEAT" and product != "CHICKEN":
+                """
+                It is validated if the selected feed is available
+                """
+                print("\n This product does'n exist. Please insert an available feed\n") 
+                print("------------\n")               
+            else:
+                print("\n Your product has been added successfully!! \n")
+                print("------------\n")
+                purchase.append(product) 
+                
 
 create_order()
