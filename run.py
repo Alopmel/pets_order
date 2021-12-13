@@ -19,7 +19,7 @@ def calculate_amount():
         except ValueError as e:
             print("You must insert a number! Try it again\n")
 
-calculate_amount()  
+ 
 
 def create_order():
     """
@@ -80,9 +80,15 @@ def create_order():
             print(" -", products)
             print("\n Thank you for making your purchase with us. We are waiting for you soon!")
         elif option == "5":
-            print("We are very sorry that you are leaving, we are waiting for you soon!")
+            print("\n We are very sorry that you are leaving, we are waiting for you soon!")
             break
         else:
             print("\n Enter a correct option")               
 
-create_order()
+
+
+def main():
+    calculate_amount() 
+    create_order()
+
+main()
