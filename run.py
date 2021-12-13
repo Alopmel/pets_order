@@ -40,7 +40,8 @@ def create_order():
         print("1. Add product")
         print("2. Remove product ")
         print("3. Show shopping list")
-        print("4. Exit the program\n")
+        print("4. Confirm order")
+        print("5. Exit the program\n")
         option = input ("-->")
 
         if option == "1":
@@ -74,7 +75,14 @@ def create_order():
             print("Shopping list:\n")
             for products in purchase:
                 print(" -", products)
-        
-                
+        elif option == "4":
+            print("Your order is: \n")
+            print(" -", products)
+            print("\n Thank you for making your purchase with us. We are waiting for you soon!")
+        elif option == "5":
+            print("We are very sorry that you are leaving, we are waiting for you soon!")
+            break
+        else:
+            print("\n Enter a correct option")               
 
 create_order()
