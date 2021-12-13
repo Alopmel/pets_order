@@ -8,9 +8,9 @@ def calculate_amount():
         try:
             weight = float(input("Insert your dog's weight: ")) 
             daily_amount = (weight * 0.025) * 1000
-            daily_round = round(daily_amount,2)
+            daily_round = round(daily_amount, 2)
             monthly_amount = (daily_amount * 30) / 1000
-            monthly_round = round(monthly_amount,2)
+            monthly_round = round(monthly_amount, 2)
             print(f"The daily amount that {pet_name_str} has to eat is {daily_round} gr. Therefore we recommend you buy {monthly_round} kg per month. \n")
             break
         except ValueError as e:
@@ -74,7 +74,8 @@ def create_order():
                 print(" -", products)
         elif option == "4":
             print("Your order is: \n")
-            print(" -", products)
+            for products in purchase:
+                print(" -", products)
             print("\n Thank you for making your purchase with us. We are waiting for you soon!")
         elif option == "5":
             print("\n We are very sorry that you are leaving, we are waiting for you soon!")
