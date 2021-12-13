@@ -1,6 +1,3 @@
-print("Hello, we are a store dedicated to the health and happiness of your pet.")
-print("let's start by filling in your dog's file with a few simple questions\n")
-
 def calculate_amount():
     """
     Add the pet's name and calculated its daily and monthly amount of food
@@ -88,7 +85,12 @@ def create_order():
 
 
 def main():
+    """
+    Run all program functions
+    """
     calculate_amount() 
     create_order()
-
+    
+print("Hello, we are a store dedicated to the health and happiness of your pet.")
+print("let's start by filling in your dog's file with a few simple questions\n")
 main()
