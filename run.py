@@ -36,7 +36,7 @@ def create_order():
 
 
     while True:
-        print("Insert the number that corresponds to the action you want to perform \n")
+        print("\n Insert the number that corresponds to the action you want to perform \n")
         print("1. Add product")
         print("2. Remove product ")
         print("3. Show shopping list")
@@ -44,30 +44,37 @@ def create_order():
         option = input ("-->")
 
         if option == "1":
-            print("What fedd do you want to buy?\n")
-            print("Salmon")
-            print("Meat")
-            print("Chicken\n")
+            # Insert the feed
+            print("\n What feed do you want to buy?\n")
+            print("- Salmon")
+            print("- Meat")
+            print(" -Chicken\n")
 
             product = input("Insert a product: ").upper()
 
             if product != "SALMON" and product != "MEAT" and product != "CHICKEN":
-                """
-                It is validated if the selected feed is available
-                """
+                #It is validated if the selected feed is available
                 print("\n This product does'n exist. Please insert an available feed\n") 
-                print("------------\n")               
+                print("------------\n")
             else:
                 print("\n Your product has been added successfully!! \n")
                 print("------------\n")
                 purchase.append(product)
         elif option == "2":
-            product = input("Insert a product: ").upper()
+            # Delete the selected product
+            product = input("\n Insert a product: ").upper()
             if product not in purchase:
+                # Validates if the product exists in the list
                 print("This product is not on the list")
             else: 
                 purchase.remove(product)
-                print(purchase)
+                print("\n The product was successfully removed")
+        elif option == "3":
+            # Show the shopping list 
+            print("Shopping list:\n")
+            for products in purchase:
+                print(" -", products)
+        
                 
 
 create_order()
