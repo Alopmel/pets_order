@@ -90,7 +90,8 @@ def main():
     """
     calculate_amount() 
     create_order()
-    
+
 print("Hello, we are a store dedicated to the health and happiness of your pet.")
 print("let's start by filling in your dog's file with a few simple questions\n")
+
 main()
