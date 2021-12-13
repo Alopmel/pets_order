@@ -60,7 +60,14 @@ def create_order():
             else:
                 print("\n Your product has been added successfully!! \n")
                 print("------------\n")
-                purchase.append(product) 
+                purchase.append(product)
+        elif option == "2":
+            product = input("Insert a product: ").upper()
+            if product not in purchase:
+                print("This product is not on the list")
+            else: 
+                purchase.remove(product)
+                print(purchase)
                 
 
 create_order()
