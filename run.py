@@ -77,6 +77,7 @@ def create_order():
     print("-----------------------\n")
 
     while True:
+        print("      ")
         print("Insert the number that corresponds " +
               "to the action you want to perform \n")
         list_one_tuple(actions_list)
@@ -101,13 +102,15 @@ def create_order():
                 print("------------\n")
         elif option == "1":
             # Delete the selected product
+            print("      ")
             print("Insert the number of the product you want to delete")
+            print("      ")
             list_one_tuple(purchase)
-            productDelete = int(input("\n Insert a product: \n "))
-            if productDelete <= len(purchase):
+            product = int(input("\n Insert a product: \n "))
+            if product <= len(purchase):
                 # Validates if the product exists in the list
-                purchase.remove(feed[productDelete])
-                totalPrice.remove(prices[productDelete])
+                purchase.pop(product)
+                totalPrice.pop(product)
                 print("\n The product was successfully removed")
             else:
                 print("This product is not on the list")
