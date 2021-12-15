@@ -6,6 +6,8 @@ should eat. Afterwards, the client will be able
 to choose the products that are available, delete them, 
 consult their order, place them or exit the program.
 """
+print("Hello, we are a store dedicated to the health and happiness of your pet.")
+print("let's start by filling in your dog's file with a few simple questions\n")
 
 # Global Variables
 feed = ["Salmon", "Meat", "Chicken", "Lamb and rice", "Rabbit and cereals",
@@ -14,25 +16,34 @@ prices = [15, 14, 12, 17, 16, 5, 7, 9]
 purchase = []
 totalPrice = []
 
-def calculate_amount():
+class DogInfo:
     """
-    Add the pet's name and calculated its daily and monthly amount of food
-    Add validation for weight to be a number
+    Creates an instance of DogInfo
     """
-    pet_name_str = input("What is your dog's name? ")
-    while True:
-        try:
-            weight = float(input("Insert your dog's weight: "))
-            daily_amount = (weight * 0.025) * 1000
-            daily_round = round(daily_amount, 2)
-            monthly_amount = (daily_amount * 30) / 1000
-            monthly_round = round(monthly_amount, 2)
-            print(f"The daily amount that {pet_name_str} has to eat is {daily_round} gr." +
-                  f"Therefore we recommend you buy {monthly_round} kg per month. \n")
-            break
-        except ValueError as e:
-            print(f"{e} It's not valid. You must insert a number! Try it again\n")
 
+    def __init__(self):
+        # instance attribute
+        self.name = input("What's its your dog's name?")
+        while True:
+          try:
+            self.weight = float(input("What's its your dog's weight?"))
+            break
+          except ValueError as e:
+            print(f"{e} It's not valid. You must insert a number! Try it again\n")
+    
+    def calculate_amount(self):
+      # calculation of the daily and monthly amount of feed
+      daily_amount = (self.weight * 0.025) * 1000
+      round_daily = round(daily_amount, 2)
+      monthly_amount = (daily_amount * 30) / 1000
+      round_monthly = round(monthly_amount, 2)
+      print("       ")
+      print(f"{self.name}'s weight is {self.weight} kg.")
+      print(f"So the daily amount of food for her is {round_daily} gr.") 
+      print(f"Therefore we recommend you buy {round_monthly} kg per month.")
+      print("       ")
+
+dog = DogInfo()
 
 def create_order():
     """
@@ -57,7 +68,6 @@ def create_order():
         if option == "1":
             # Insert the feed
             print("\n What feed do you want to buy?\n")
-
             product = int(input("Insert a product: "))
 
             if product <= 7:
@@ -105,11 +115,7 @@ def main():
     """
     Run all program functions
     """
-    calculate_amount()
+    dog.calculate_amount()
     create_order()
-
-
-print("Hello, we are a store dedicated to the health and happiness of your pet.")
-print("let's start by filling in your dog's file with a few simple questions\n")
 
 main()
