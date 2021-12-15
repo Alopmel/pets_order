@@ -1,3 +1,19 @@
+"""
+Program to place an order for dog food. First, 
+the name of the pet and its weight will be asked
+to calculate the daily and monthly amount it 
+should eat. Afterwards, the client will be able
+to choose the products that are available, delete them, 
+consult their order, place them or exit the program.
+"""
+
+# Global Variables
+feed = ["Salmon", "Meat", "Chicken", "Lamb and rice", "Rabbit and cereals",
+        "Lamb treats", "Duck treats", "Salmon with Sweet Potato treats"]
+prices = [15, 14, 12, 17, 16, 5, 7, 9]
+purchase = []
+totalPrice = []
+
 def calculate_amount():
     """
     Add the pet's name and calculated its daily and monthly amount of food
@@ -11,7 +27,8 @@ def calculate_amount():
             daily_round = round(daily_amount, 2)
             monthly_amount = (daily_amount * 30) / 1000
             monthly_round = round(monthly_amount, 2)
-            print(f"The daily amount that {pet_name_str} has to eat is {daily_round} gr. Therefore we recommend you buy {monthly_round} kg per month. \n")
+            print(f"The daily amount that {pet_name_str} has to eat is {daily_round} gr." +
+                  f"Therefore we recommend you buy {monthly_round} kg per month. \n")
             break
         except ValueError as e:
             print(f"{e} It's not valid. You must insert a number! Try it again\n")
@@ -23,14 +40,13 @@ def create_order():
     A variable is created where the purchase products will be added
     A loop is created that validates the inserted number for available actions
     """
-    purchase = []
-
+    
     print("-----------------------")
     print("-    Shopping list    -")
     print("-----------------------\n")
 
     while True:
-        print("Insert the number that corresponds to the action you want to perform \n")
+        print("Insert the number that corresponds " + "to the action you want to perform \n")
         print("1. Add product")
         print("2. Remove product ")
         print("3. Show shopping list")
@@ -41,29 +57,31 @@ def create_order():
         if option == "1":
             # Insert the feed
             print("\n What feed do you want to buy?\n")
-            print("- Salmon")
-            print("- Meat")
-            print(" -Chicken\n")
 
-            product = input("Insert a product: ").upper()
+            product = int(input("Insert a product: "))
 
-            if product != "SALMON" and product != "MEAT" and product != "CHICKEN":
+            if product <= 7:
                 # It is validated if the selected feed is available
-                print("\n This product does'n exist. Please insert an available feed\n")
-                print("------------\n")
-            else:
                 print("\n Your product has been added successfully!! \n")
                 print("------------\n")
-                purchase.append(product)
+                purchase.append(feed[product])
+                totalPrice.append(prices[product])
+                print(purchase)
+                print(totalPrice)
+            else:
+                print("\n This product does'n exist. Please insert an available feed\n")
+                print("------------\n")
         elif option == "2":
             # Delete the selected product
-            product = input("\n Insert a product: ").upper()
-            if product not in purchase:
+            product = int(input("\n Insert a product: "))
+            if product <= len(purchase):
                 # Validates if the product exists in the list
-                print("This product is not on the list")
+                purchase.remove(feed[product])
+                totalPrice.remove(prices[product])
+                print(purchase)
+                print("\n The product was successfully removed")                
             else:
-                purchase.remove(product)
-                print("\n The product was successfully removed")
+                print("This product is not on the list")
         elif option == "3":
             # Show the shopping list
             print("Shopping list:\n")
@@ -71,11 +89,13 @@ def create_order():
                 print(" -", products)
         elif option == "4":
             print("Your order is: \n")
-            for products in purchase:
-                print(" -", products)
-            print("\n Thank you for making your purchase with us. We are waiting for you soon!")
+            for products, price in zip(purchase, totalPrice):
+                print(f" - {products} {price}€")
+            sumTotalPrice = sum(totalPrice)
+            print(f"Total ----> {sumTotalPrice}€ \n")
+            print("Thank you for making your purchase with us. We are waiting for you soon!")
         elif option == "5":
-            print("\n We are very sorry that you are leaving, we are waiting for you soon!")
+            print("We are very sorry that you are leaving, we are waiting for you soon!")
             break
         else:
             print("\n Enter a correct option")
