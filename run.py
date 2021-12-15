@@ -79,12 +79,14 @@ def create_order():
     while True:
         print("Insert the number that corresponds " +
               "to the action you want to perform \n")
+        list_one_tuple(actions_list)
         option = input("-->")
 
         if option == "0":
             # Insert the feed
             print("\n What feed do you want to buy?\n")
             list_two_tuples(feed, prices)
+            print("      ")
             product = int(input("Insert the number of the product: "))
             if product <= 7:
                 # It is validated if the selected feed is available
