@@ -94,8 +94,6 @@ def create_order():
                 print("------------\n")
                 purchase.append(feed[product])
                 totalPrice.append(prices[product])
-                print(purchase)
-                print(totalPrice)
             else:
                 print("      ")
                 print("This product does'n exist.")
@@ -105,12 +103,11 @@ def create_order():
             # Delete the selected product
             print("Insert the number of the product you want to delete")
             list_one_tuple(purchase)
-            product = int(input("\n Insert a product: \n "))
-            if product <= len(purchase):
+            productDelete = int(input("\n Insert a product: \n "))
+            if productDelete <= len(purchase):
                 # Validates if the product exists in the list
-                purchase.remove(feed[product])
-                totalPrice.remove(prices[product])
-                print(purchase)
+                purchase.remove(feed[productDelete])
+                totalPrice.remove(prices[productDelete])
                 print("\n The product was successfully removed")
             else:
                 print("This product is not on the list")
