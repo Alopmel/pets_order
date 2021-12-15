@@ -28,11 +28,11 @@ class DogInfo:
 
     def __init__(self):
         # Instance attribute
-        self.name = input("What's its your dog's name?")
+        self.name = input("What's its your dog's name? \n ")
         # Validation that the inserted weight is a float
         while True:
             try:
-                self.weight = float(input("What's its your dog's weight?"))
+                self.weight = float(input("What's its your dog's weight? \n " ))
                 break
             except ValueError as e:
                 print(f"{e} It's not valid." +
@@ -80,14 +80,14 @@ def create_order():
         print("Insert the number that corresponds " +
               "to the action you want to perform \n")
         list_one_tuple(actions_list)
-        option = input("-->")
+        option = input("--> \n")
 
         if option == "0":
             # Insert the feed
             print("\n What feed do you want to buy?\n")
             list_two_tuples(feed, prices)
             print("      ")
-            product = int(input("Insert the number of the product: "))
+            product = int(input("Insert the number of the product: \n"))
             if product <= 7:
                 # It is validated if the selected feed is available
                 print("\n Your product has been added successfully!! \n")
@@ -105,7 +105,7 @@ def create_order():
             # Delete the selected product
             print("Insert the number of the product you want to delete")
             list_one_tuple(purchase)
-            product = int(input("\n Insert a product: "))
+            product = int(input("\n Insert a product: \n "))
             if product <= len(purchase):
                 # Validates if the product exists in the list
                 purchase.remove(feed[product])
