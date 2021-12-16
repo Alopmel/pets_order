@@ -6,11 +6,18 @@ should eat. Afterwards, the client will be able
 to choose the products that are available, delete them,
 consult their order, place them or exit the program.
 """
-print("Hello, we are a store dedicated to the" +
-      "health and happiness of your pet.")
-print("let's start by filling in your dog's" +
-      "file with a few simple questions\n")
-
+print("+----------------------------------------" +
+      "----------------------------------+")
+print("|                                        " +
+      "                                  |")
+print("| Hello, we are a store dedicated to the" +
+      " health and happiness of your pet. |")
+print("| Let's start by filling in your dog's " +
+      "file with a few simple questions.   |")
+print("|                                        " +
+      "                                  |")
+print("+-----------------------------------------" +
+      "---------------------------------+\n")
 # Global Variables
 feed = ["Salmon", "Meat", "Chicken", "Lamb and rice", "Rabbit and cereals",
         "Lamb treats", "Duck treats", "Salmon with Sweet Potato treats"]
@@ -27,6 +34,9 @@ class DogInfo:
     """
 
     def get_info(self):
+        """
+        Get the pet's name and weight
+        """
         self.name = input("What's its your dog's name? \n ")
         # Validation that the inserted weight is a float
         while True:
@@ -119,6 +129,12 @@ def delete_product():
 
 
 def show_total_items():
+    """
+    Function to calculate the total quantity of each product
+    We apply lambda with map() to see how many times
+    a value is repeated in the list. Then zip() is used to
+    mix both data and get a dictionary.
+    """
     results = dict(zip(purchase, map(lambda x: purchase.count(x), purchase)))
     for k, v in results.items():
         print(f"{v} pc {k}")
