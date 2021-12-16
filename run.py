@@ -18,6 +18,7 @@ print("|                                        " +
       "                                  |")
 print("+-----------------------------------------" +
       "---------------------------------+\n")
+
 # Global Variables
 feed = ["Salmon", "Meat", "Chicken", "Lamb and rice", "Rabbit and cereals",
         "Lamb treats", "Duck treats", "Salmon with Sweet Potato treats"]
@@ -26,6 +27,7 @@ actions_list = ["Add product", "Remove product", "Show shopping list",
                 "Confirm order", "Exit the program"]
 purchase = []
 totalPrice = []
+sumTotalPrice = 0
 
 
 class DogInfo:
@@ -48,7 +50,9 @@ class DogInfo:
                       "You must insert a number! Try it again\n")
 
     def calculate_amount(self):
-        # Calculation of the daily and monthly amount of feed
+        """
+        Calculation of the daily and monthly amount of feed
+        """
         daily_amount = (self.weight * 0.025) * 1000
         round_daily = round(daily_amount, 2)
         monthly_amount = (daily_amount * 30) / 1000
@@ -78,6 +82,21 @@ def list_two_tuples_listed(tup1, tup2):
     """
     for i, (f, p) in enumerate(zip(tup1, tup2)):
         print(f"{i}.- {f} {p}€")
+
+
+def list_two_tuples(tup1, tup2):
+    """
+    Create a enumerate list of two tuple
+    """
+    for f, p in zip(tup1, tup2):
+        print(f"{f} {p}€")
+
+
+def list_count_item(list):
+    results = dict(zip(list, map(lambda x: list.count(x), list)))
+    for k, v in results.items():
+        print(f"{v}pc {k}")
+    return results
 
 
 def add_product():
@@ -135,9 +154,20 @@ def show_total_items():
     a value is repeated in the list. Then zip() is used to
     mix both data and get a dictionary.
     """
-    results = dict(zip(purchase, map(lambda x: purchase.count(x), purchase)))
-    for k, v in results.items():
-        print(f"{v} pc {k}")
+    print("       ")
+    print("Your shopping List: \n")
+    list_count_item(purchase)
+
+
+def confirm_order():
+    print("       ")
+    print("Your order is: \n")
+    list_two_tuples(purchase, totalPrice)
+    sumTotalPrice = sum(totalPrice)
+    print("-------------")
+    print(f"Total ----> {sumTotalPrice}€ \n")
+    print("Thank you for making your purchase with us.")
+    print("We are waiting for you soon!!")
 
 
 def create_order():
@@ -165,13 +195,7 @@ def create_order():
         elif option == "2":
             show_total_items()
         elif option == "3":
-            print("Your order is: \n")
-            for products, price in zip(purchase, totalPrice):
-                print(f" - {products} {price}€")
-            sumTotalPrice = sum(totalPrice)
-            print(f"Total ----> {sumTotalPrice}€ \n")
-            print("Thank you for making your purchase with us.")
-            print("We are waiting for you soon!!")
+            confirm_order()
         elif option == "4":
             print("We are very sorry that you are leaving.")
             print("We are waiting for you soon!!")
