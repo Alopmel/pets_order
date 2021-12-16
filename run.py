@@ -26,8 +26,8 @@ prices = [15, 14, 12, 17, 16, 5, 7, 9]
 actions_list = ["Add product", "Remove product", "Show shopping list",
                 "Confirm order", "Exit the program"]
 purchase = []
-totalPrice = []
-sumTotalPrice = 0
+total_price = []
+sum_total_price = 0
 
 
 class DogInfo:
@@ -115,7 +115,7 @@ def add_product():
         print("\n Your product has been added successfully!! \n")
         print("------------\n")
         purchase.append(feed[product])
-        totalPrice.append(prices[product])
+        total_price.append(prices[product])
     else:
         print("\n This product does'n exist.")
         print("Please insert an available feed\n")
@@ -138,7 +138,7 @@ def delete_product():
     if product <= len(purchase):
         # Validates if the product exists in the list
         purchase.pop(product)
-        totalPrice.pop(product)
+        total_price.pop(product)
         print("\n The product was successfully removed")
     else:
         print("        ")
@@ -167,10 +167,10 @@ def confirm_order():
     """
     print("       ")
     print("Your order is: \n")
-    list_two_tuples(purchase, totalPrice)
-    sumTotalPrice = sum(totalPrice)
+    list_two_tuples(purchase, total_price)
+    sum_total_price = sum(total_price)
     print("-------------")
-    print(f"Total ----> {sumTotalPrice}€ \n")
+    print(f"Total ----> {sum_total_price}€ \n")
     print("Thank you for making your purchase with us.")
     print("We are waiting for you soon!!")
 
