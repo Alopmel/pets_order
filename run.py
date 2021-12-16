@@ -26,13 +26,12 @@ class DogInfo:
     Creates an instance of DogInfo
     """
 
-    def __init__(self):
-        # Instance attribute
+    def get_info(self):
         self.name = input("What's its your dog's name? \n ")
         # Validation that the inserted weight is a float
         while True:
             try:
-                self.weight = float(input("What's its your dog's weight? \n " ))
+                self.weight = float(input("What's its your dog's weight? \n"))
                 break
             except ValueError as e:
                 print(f"{e} It's not valid." +
@@ -52,17 +51,77 @@ class DogInfo:
 
 
 dog = DogInfo()
+dog.get_info()
+
 
 def list_one_tuple(tup1):
-    # Create a enumerate list of one tuple
+    """
+    Create a enumerate list of one tuple
+    """
     for i, p in enumerate(tup1):
         print(f"{i}.- {p}")
 
 
-def list_two_tuples(tup1, tup2):
-    # Create a enumerate list of two tuple
+def list_two_tuples_listed(tup1, tup2):
+    """
+    Create a enumerate list of two tuple
+    """
     for i, (f, p) in enumerate(zip(tup1, tup2)):
         print(f"{i}.- {f} {p}€")
+
+
+def add_product():
+    """
+    Function to enter the selected product,
+    if it exists it is added to the purchase
+    variable and if not to start the process again
+    """
+    print("\n What feed do you want to buy?\n")
+    list_two_tuples_listed(feed, prices)
+    print("      ")
+    product = int(input("Insert a product: "))
+
+    if product <= 7:
+        # It is validated if the selected feed is available
+        print("\n Your product has been added successfully!! \n")
+        print("------------\n")
+        purchase.append(feed[product])
+        totalPrice.append(prices[product])
+    else:
+        print("\n This product does'n exist.")
+        print("Please insert an available feed\n")
+        print("------------\n")
+        add_product()
+
+
+def delete_product():
+    """
+    Function to delete one of the selected products
+    if that product does not exist in the purchase
+    variable, invokes the process again to introduce
+    another product
+    """
+    print("      ")
+    print("Insert the number of the product you want to delete")
+    print("      ")
+    list_one_tuple(purchase)
+    product = int(input("\n Insert a product: \n "))
+    if product <= len(purchase):
+        # Validates if the product exists in the list
+        purchase.pop(product)
+        totalPrice.pop(product)
+        print("\n The product was successfully removed")
+    else:
+        print("        ")
+        print("This product is not on the list\n")
+        print("------------\n")
+        delete_product()
+
+
+def show_total_items():
+    results = dict(zip(purchase, map(lambda x: purchase.count(x), purchase)))
+    for k, v in results.items():
+        print(f"{v} pc {k}")
 
 
 def create_order():
@@ -84,41 +143,11 @@ def create_order():
         option = input("--> \n")
 
         if option == "0":
-            # Insert the feed
-            print("\n What feed do you want to buy?\n")
-            list_two_tuples(feed, prices)
-            print("      ")
-            product = int(input("Insert the number of the product: \n"))
-            if product <= 7:
-                # It is validated if the selected feed is available
-                print("\n Your product has been added successfully!! \n")
-                print("------------\n")
-                purchase.append(feed[product])
-                totalPrice.append(prices[product])
-            else:
-                print("      ")
-                print("This product does'n exist.")
-                print("Please insert an available feed\n")
-                print("------------\n")
+            add_product()
         elif option == "1":
-            # Delete the selected product
-            print("      ")
-            print("Insert the number of the product you want to delete")
-            print("      ")
-            list_one_tuple(purchase)
-            product = int(input("\n Insert a product: \n "))
-            if product <= len(purchase):
-                # Validates if the product exists in the list
-                purchase.pop(product)
-                totalPrice.pop(product)
-                print("\n The product was successfully removed")
-            else:
-                print("This product is not on the list")
+            delete_product()
         elif option == "2":
-            # Show the shopping list
-            print("Shopping list:\n")
-            for products in purchase:
-                print(" -", products)
+            show_total_items()
         elif option == "3":
             print("Your order is: \n")
             for products, price in zip(purchase, totalPrice):
