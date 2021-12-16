@@ -59,7 +59,7 @@ class DogInfo:
         round_monthly = round(monthly_amount, 2)
         print("       ")
         print(f"{self.name}'s weight is {self.weight} kg.")
-        print(f"So the daily amount of food for her is {round_daily} gr.")
+        print(f"So the daily amount of food for it is {round_daily} gr.")
         print(f"Therefore we recommend you buy {round_monthly} kg per month.")
         print("       ")
 
@@ -160,6 +160,11 @@ def show_total_items():
 
 
 def confirm_order():
+    """
+    Function to confirm the order,
+    shows the list of products,
+    their price and the total sum
+    """
     print("       ")
     print("Your order is: \n")
     list_two_tuples(purchase, totalPrice)
