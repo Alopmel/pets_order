@@ -72,8 +72,8 @@ def list_one_tuple(tup1):
     """
     Create a enumerate list of one tuple
     """
-    for i, p in enumerate(tup1):
-        print(f"{i}.- {p}")
+    for i, f in enumerate(tup1):
+        print(f"{i}.- {f}")
 
 
 def list_two_tuples_listed(tup1, tup2):
@@ -93,6 +93,11 @@ def list_two_tuples(tup1, tup2):
 
 
 def list_count_item(list):
+    """
+    We apply lambda with map() to see how many times
+    a value is repeated in the list. Then zip() is used to
+    mix both data and get a dictionary.
+    """
     results = dict(zip(list, map(lambda x: list.count(x), list)))
     for k, v in results.items():
         print(f"{v}pc {k}")
@@ -150,9 +155,6 @@ def delete_product():
 def show_total_items():
     """
     Function to calculate the total quantity of each product
-    We apply lambda with map() to see how many times
-    a value is repeated in the list. Then zip() is used to
-    mix both data and get a dictionary.
     """
     print("       ")
     print("Your shopping List: \n")

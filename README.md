@@ -57,11 +57,9 @@ When the order is confirmed, you return to the main menu in case you want to pla
 
 I decided to create global variables, feed and prices are to save the products and their cost, on the other hand, action_list saves the list of actions that the user can perform. Purchase saves the selected products, totalPrice their respective prices and sumTotalPrice the total price of the order.
 
-To save the dog information entered and calculate the daily and monthly amounts of feedd create the dogInfo class. Create some functions that iterate through the tuple created with different actions, some iterate through two tuples and enumerate it, others only through one and enumerate it and another only iterate through the tuples. Thanks to this I only created the function once and I was using them in the different cases that I needed
+To save the dog information entered and calculate the daily and monthly amounts of feed create the dogInfo class. Create some functions that iterate through the tuple created with different actions, some iterate through two tuples and enumerate it, others only through one and enumerate it and another only iterate through the tuples. Thanks to this I only created the function once and I was using them in the different cases that I needed
 
-The create_order function creates a loop that validates what number has been entered in the main menu and, based on that digit, performs the different actions. In this case, I also create separate functions for each procedure and call them in the create_order function. I decided to do it like this because I see the code as more clean and scalable since if I want to perform other actions or change the products I just have to implement it and not change the structure of the code itself. The create_order function creates a loop that validates what number has been entered in the main menu and, based on that digit, performs the different actions. In this case, I also create separate functions for each procedure and call them in the create_order function.
-
-I decided to do it like this because I see the code as more clean and scalable since if I want to perform other actions or change the products I just have to implement it and not change the structure of the code itself. Finally, create the main function that invokes the calculation of the DogInfo class and create_order.
+The create_order function creates a loop that validates what number has been entered in the main menu and, based on that digit, performs the different actions. In this case, I also create separate functions for each procedure and call them in the create_order function. I decided to do it like this because I see the code as more clean and scalable since if I want to perform other actions or change the products I just have to implement it and not change the structure of the code itself. Finally, create the main function that invokes the calculation of the DogInfo class and create_order.
 
 # Testing
 
@@ -79,7 +77,7 @@ No remaining bugs.
 
 # Deployment
 
-I deployed at work on Heroku. The steps that I followed were the following.
+I deployed at work on Heroku. The steps that I followed were the following:
 
 * I logged into Heroku and created a new application called dogs_order
 * In the settings section:
